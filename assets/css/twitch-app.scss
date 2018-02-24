@@ -1,0 +1,160 @@
+$background-color:    #191919;
+$font-color:          #CDC400;
+
+* {
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+html {
+  font-size: 15px;
+}
+
+@media (min-resolution: 192dpi),
+(-webkit-min-device-pixel-ratio: 2),
+(min--moz-device-pixel-ratio: 2),
+(-o-min-device-pixel-ratio: 2/1),
+(min-device-pixel-ratio: 2),
+(min-resolution: 2dppx) {
+  html {
+    font-size: 30px;
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 3),
+(min--moz-device-pixel-ratio: 3),
+(-o-min-device-pixel-ratio: 3/1),
+(min-device-pixel-ratio: 3),
+(min-resolution: 3dppx) {
+  html {
+    font-size: 40px;
+  }
+}
+
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  background: $background-color;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  color: $font-color;
+  align-items: center;
+}
+
+a {
+  color: $font-color;
+}
+
+a:hover {
+  color: lighten($font-color, 15%);
+}
+
+#twitch-container {
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1;
+  align-self: center;
+  justify-content: center;
+}
+
+.twitch-channel {
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 1 1 42%;
+  position: relative;
+  margin: 1em;
+  padding: .5em 1em;
+  align-items: center;
+
+  .channel-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+  }
+
+  &:nth-child(odd) {
+    justify-content: flex-end;
+
+    .stream-indicator {
+      order: 2;
+    }
+
+    .channel-info {
+      text-align: right;
+      order: 1;
+    }
+  }
+
+  &:nth-child(even) {
+    justify-content: flex-start;
+
+    .stream-indicator {
+      order: 1;
+    }
+
+    .channel-info {
+      text-align: left;
+      order: 2;
+    }
+  }
+
+  .stream-indicator {
+    flex: none;
+    height: 12em;
+    width: 12em;
+    padding: 1.5em;
+    background: radial-gradient(circle, lighten(grey, 25%), grey);
+    background-color: green;
+    border-radius: 50%;
+    border: 2px solid black;
+
+    &.online {
+      background: radial-gradient(circle, lighten(green, 25%), green);
+      background-color: green;
+    }
+
+    &.offline {
+      background: radial-gradient(circle, lighten(red, 25%), red);
+      background-color: red;
+    }
+
+    .twitch-logo {
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+      border: 2px solid black;
+    }
+  }
+
+  .channel-info {
+    padding: 1em;
+    .channel-name {
+
+    }
+
+    .stream-status {
+
+    }
+  }
+}
+
+footer {
+  display: flex;
+  flex-flow: row nowrap;
+  flex: none;
+  width: 100%;
+  padding: 1em 2em;
+
+  #copyright {
+    flex: 1;
+    align-content: left;
+  }
+
+  #footer-link {
+    flex: none;
+  }
+}
